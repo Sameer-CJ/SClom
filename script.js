@@ -490,3 +490,41 @@ if (yearElement) {
   yearElement.textContent =
     new Date().getFullYear();
 }
+/* ==================================
+   One-Time SCLOM Introduction Screen
+================================== */
+
+const brandIntro =
+  document.querySelector('#brand-intro');
+
+const sclomIntroStorageKey =
+  'sclom-introduction-seen';
+
+if (brandIntro) {
+  const introAlreadySeen =
+    localStorage.getItem(sclomIntroStorageKey);
+
+  if (!introAlreadySeen) {
+    document.body.classList.add('intro-active');
+    brandIntro.classList.add('show');
+
+    localStorage.setItem(
+      sclomIntroStorageKey,
+      'true'
+    );
+
+    window.setTimeout(() => {
+      brandIntro.classList.add('hide');
+
+      window.setTimeout(() => {
+        brandIntro.remove();
+
+        document.body.classList.remove(
+          'intro-active'
+        );
+      }, 700);
+    }, 3500);
+  } else {
+    brandIntro.remove();
+  }
+}
