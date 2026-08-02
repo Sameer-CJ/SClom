@@ -2133,3 +2133,161 @@ body:hover .cursor-glow {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+/* ==================================
+   One-Time SCLOM Introduction Screen
+================================== */
+
+.brand-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(234, 189, 77, 0.12),
+      transparent 38%
+    ),
+    #030303;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+}
+
+.brand-intro.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.brand-intro.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.brand-intro-content {
+  width: min(760px, 100%);
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+
+  animation: sclomIntroContent 1s ease forwards;
+}
+
+.brand-intro-logo {
+  width: clamp(90px, 12vw, 145px);
+  height: clamp(90px, 12vw, 145px);
+
+  display: block;
+
+  margin: 0 auto 28px;
+
+  object-fit: cover;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 0 0 1px rgba(234, 189, 77, 0.35),
+    0 0 45px rgba(234, 189, 77, 0.22);
+}
+
+.brand-intro h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(48px, 9vw, 110px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.brand-intro p {
+  margin: 24px auto 0;
+
+  color: #d7d7d7;
+
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(16px, 2.4vw, 27px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+.brand-intro p span {
+  color: #eabd4d;
+  font-weight: 800;
+}
+
+.brand-intro-line {
+  width: 0;
+  height: 2px;
+
+  margin: 28px auto 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #eabd4d,
+    transparent
+  );
+
+  animation: sclomIntroLine 1.3s ease 0.5s forwards;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+@keyframes sclomIntroContent {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sclomIntroLine {
+  to {
+    width: min(380px, 75%);
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-intro-logo {
+    border-radius: 20px;
+  }
+
+  .brand-intro p {
+    max-width: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-intro,
+  .brand-intro-content,
+  .brand-intro-line {
+    animation: none;
+    transition: none;
+  }
+
+  .brand-intro-content {
+    opacity: 1;
+    transform: none;
+  }
+
+  .brand-intro-line {
+    width: min(380px, 75%);
+  }
+}
