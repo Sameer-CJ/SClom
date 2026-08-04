@@ -2,11 +2,14 @@
 
 const body = document.body;
 
-const header = document.getElementById("site-header");
+const header =
+  document.getElementById("site-header");
 
-const menuButton = document.querySelector(".menu-toggle");
+const menuButton =
+  document.querySelector(".menu-toggle");
 
-const navigation = document.getElementById("primary-nav");
+const navigation =
+  document.getElementById("primary-nav");
 
 const navLinks = [
   ...document.querySelectorAll(
@@ -14,30 +17,36 @@ const navLinks = [
   )
 ];
 
-const intro = document.getElementById("brand-intro");
+const intro =
+  document.getElementById("brand-intro");
 
-const cursorGlow = document.querySelector(".cursor-glow");
+const cursorGlow =
+  document.querySelector(".cursor-glow");
 
-const reduceMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
+const reduceMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
 /*
-  One-time introduction.
-
-  Introduction har browser session mein
-  sirf ek baar show hogi.
+  Show introduction once per browser session.
 */
 
 if (intro) {
-  const introSeen = sessionStorage.getItem(
-    "sclomIntroSeen"
-  );
+
+  const introSeen =
+    sessionStorage.getItem(
+      "sclomIntroSeen"
+    );
 
   if (introSeen || reduceMotion) {
+
     intro.remove();
+
   } else {
+
     window.setTimeout(() => {
+
       intro.classList.add("hide");
 
       sessionStorage.setItem(
@@ -48,8 +57,11 @@ if (intro) {
       window.setTimeout(() => {
         intro.remove();
       }, 700);
+
     }, 1800);
+
   }
+
 }
 
 /*
@@ -57,15 +69,22 @@ if (intro) {
 */
 
 function closeMenu() {
+
   if (!menuButton || !navigation) {
     return;
   }
 
-  menuButton.classList.remove("active");
+  menuButton.classList.remove(
+    "active"
+  );
 
-  navigation.classList.remove("open");
+  navigation.classList.remove(
+    "open"
+  );
 
-  header?.classList.remove("menu-active");
+  header?.classList.remove(
+    "menu-active"
+  );
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -77,19 +96,29 @@ function closeMenu() {
     "Open navigation"
   );
 
-  body.classList.remove("menu-open");
+  body.classList.remove(
+    "menu-open"
+  );
+
 }
 
 function openMenu() {
+
   if (!menuButton || !navigation) {
     return;
   }
 
-  menuButton.classList.add("active");
+  menuButton.classList.add(
+    "active"
+  );
 
-  navigation.classList.add("open");
+  navigation.classList.add(
+    "open"
+  );
 
-  header?.classList.add("menu-active");
+  header?.classList.add(
+    "menu-active"
+  );
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -101,45 +130,76 @@ function openMenu() {
     "Close navigation"
   );
 
-  body.classList.add("menu-open");
+  body.classList.add(
+    "menu-open"
+  );
+
 }
 
-menuButton?.addEventListener("click", () => {
-  const isOpen =
-    navigation?.classList.contains("open");
+menuButton?.addEventListener(
+  "click",
+  () => {
 
-  if (isOpen) {
-    closeMenu();
-  } else {
-    openMenu();
+    const isOpen =
+      navigation?.classList.contains(
+        "open"
+      );
+
+    if (isOpen) {
+
+      closeMenu();
+
+    } else {
+
+      openMenu();
+
+    }
+
   }
-});
+);
 
 navLinks.forEach((link) => {
-  link.addEventListener("click", closeMenu);
+
+  link.addEventListener(
+    "click",
+    closeMenu
+  );
+
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
+document.addEventListener(
+  "keydown",
+  (event) => {
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 900) {
-    closeMenu();
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+
   }
-});
+);
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
+
+  }
+);
 
 /*
-  Header background after scrolling.
+  Header background on scroll.
 */
 
 function updateHeader() {
+
   header?.classList.toggle(
     "scrolled",
     window.scrollY > 20
   );
+
 }
 
 updateHeader();
@@ -158,13 +218,14 @@ window.addEventListener(
 
 const sections = navLinks
   .map((link) => {
-    const href = link.getAttribute("href");
 
-    if (!href) {
-      return null;
-    }
+    const target =
+      link.getAttribute("href");
 
-    return document.querySelector(href);
+    return document.querySelector(
+      target
+    );
+
   })
   .filter(Boolean);
 
@@ -172,37 +233,52 @@ if (
   "IntersectionObserver" in window &&
   sections.length
 ) {
+
   const sectionObserver =
     new IntersectionObserver(
+
       (entries) => {
+
         entries.forEach((entry) => {
+
           if (!entry.isIntersecting) {
             return;
           }
 
-          const currentSection =
+          const current =
             `#${entry.target.id}`;
 
           navLinks.forEach((link) => {
-            const linkTarget =
-              link.getAttribute("href");
 
             link.classList.toggle(
               "active",
-              linkTarget === currentSection
+              link.getAttribute("href") ===
+                current
             );
+
           });
+
         });
+
       },
+
       {
-        rootMargin: "-30% 0px -60% 0px",
+        rootMargin:
+          "-30% 0px -60% 0px",
+
         threshold: 0.01
       }
+
     );
 
   sections.forEach((section) => {
-    sectionObserver.observe(section);
+
+    sectionObserver.observe(
+      section
+    );
+
   });
+
 }
 
 /*
@@ -210,20 +286,32 @@ if (
 */
 
 const revealItems =
-  document.querySelectorAll(".reveal");
+  document.querySelectorAll(
+    ".reveal"
+  );
 
 if (
   reduceMotion ||
   !("IntersectionObserver" in window)
 ) {
+
   revealItems.forEach((item) => {
-    item.classList.add("visible");
+
+    item.classList.add(
+      "visible"
+    );
+
   });
+
 } else {
+
   const revealObserver =
     new IntersectionObserver(
+
       (entries, observer) => {
+
         entries.forEach((entry) => {
+
           if (!entry.isIntersecting) {
             return;
           }
@@ -232,31 +320,47 @@ if (
             "visible"
           );
 
-          observer.unobserve(entry.target);
+          observer.unobserve(
+            entry.target
+          );
+
         });
+
       },
+
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -40px"
+        rootMargin:
+          "0px 0px -40px"
       }
+
     );
 
   revealItems.forEach((item) => {
-    revealObserver.observe(item);
+
+    revealObserver.observe(
+      item
+    );
+
   });
+
 }
 
 /*
-  Animated statistics.
+  Animated counters.
 */
 
 const counters =
-  document.querySelectorAll("[data-count]");
+  document.querySelectorAll(
+    "[data-count]"
+  );
 
 function animateCounter(element) {
-  const target = Number(
-    element.dataset.count || 0
-  );
+
+  const target =
+    Number(
+      element.dataset.count || 0
+    );
 
   const suffix =
     element.dataset.suffix || "";
@@ -264,138 +368,192 @@ function animateCounter(element) {
   const duration =
     reduceMotion ? 0 : 1200;
 
-  const startTime = performance.now();
+  const start =
+    performance.now();
 
-  function update(currentTime) {
+  function update(now) {
+
     const progress =
       duration === 0
         ? 1
         : Math.min(
-            (currentTime - startTime) /
-              duration,
+            (now - start) / duration,
             1
           );
 
     const eased =
-      1 - Math.pow(1 - progress, 3);
-
-    const currentNumber =
-      Math.round(target * eased);
+      1 - Math.pow(
+        1 - progress,
+        3
+      );
 
     element.textContent =
-      `${currentNumber}${suffix}`;
+      `${Math.round(
+        target * eased
+      )}${suffix}`;
 
     if (progress < 1) {
-      requestAnimationFrame(update);
+
+      requestAnimationFrame(
+        update
+      );
+
     }
+
   }
 
-  requestAnimationFrame(update);
+  requestAnimationFrame(
+    update
+  );
+
 }
 
-if ("IntersectionObserver" in window) {
+if (
+  "IntersectionObserver" in window
+) {
+
   const counterObserver =
     new IntersectionObserver(
+
       (entries, observer) => {
+
         entries.forEach((entry) => {
+
           if (!entry.isIntersecting) {
             return;
           }
 
-          animateCounter(entry.target);
+          animateCounter(
+            entry.target
+          );
 
-          observer.unobserve(entry.target);
+          observer.unobserve(
+            entry.target
+          );
+
         });
+
       },
+
       {
         threshold: 0.5
       }
+
     );
 
   counters.forEach((counter) => {
-    counterObserver.observe(counter);
+
+    counterObserver.observe(
+      counter
+    );
+
   });
+
 } else {
-  counters.forEach((counter) => {
-    animateCounter(counter);
-  });
+
+  counters.forEach(
+    animateCounter
+  );
+
 }
 
 /*
-  Cursor glow.
-
-  Mobile devices par cursor glow
-  automatically disable rahega.
+  Desktop cursor glow.
 */
 
 if (
   cursorGlow &&
-  window.matchMedia("(pointer: fine)").matches &&
+  window
+    .matchMedia("(pointer: fine)")
+    .matches &&
   !reduceMotion
 ) {
+
   window.addEventListener(
+
     "pointermove",
+
     (event) => {
+
       cursorGlow.style.left =
         `${event.clientX}px`;
 
       cursorGlow.style.top =
         `${event.clientY}px`;
+
     },
+
     {
       passive: true
     }
+
   );
+
 }
 
 /*
-  Contact form.
-
-  Neeche recipient mein apna asli
-  business email address likhein.
+  Contact form opens email application.
 */
 
 const contactForm =
-  document.getElementById("contact-form");
+  document.getElementById(
+    "contact-form"
+  );
 
 const formStatus =
-  document.getElementById("form-status");
+  document.getElementById(
+    "form-status"
+  );
 
 contactForm?.addEventListener(
+
   "submit",
+
   (event) => {
+
     event.preventDefault();
 
-    if (!contactForm.checkValidity()) {
+    if (
+      !contactForm.checkValidity()
+    ) {
+
       contactForm.reportValidity();
 
       if (formStatus) {
+
         formStatus.textContent =
           "Please complete all required fields.";
+
       }
 
       return;
+
     }
 
     const data =
-      new FormData(contactForm);
+      new FormData(
+        contactForm
+      );
 
     const name =
-      String(data.get("name") || "").trim();
+      String(
+        data.get("name") || ""
+      ).trim();
 
     const email =
-      String(data.get("email") || "").trim();
+      String(
+        data.get("email") || ""
+      ).trim();
 
     const service =
-      String(data.get("service") || "").trim();
+      String(
+        data.get("service") || ""
+      ).trim();
 
     const message =
-      String(data.get("message") || "").trim();
-
-    /*
-      Is sample email ko apne
-      real email se replace karein.
-    */
+      String(
+        data.get("message") || ""
+      ).trim();
 
     const recipient =
       "naqvishahvlog@gmail.com";
@@ -405,7 +563,7 @@ contactForm?.addEventListener(
         `SCLOM enquiry: ${service}`
       );
 
-    const bodyText =
+    const emailBody =
       encodeURIComponent(
         `Name: ${name}\n` +
         `Email: ${email}\n` +
@@ -414,25 +572,35 @@ contactForm?.addEventListener(
       );
 
     if (formStatus) {
+
       formStatus.textContent =
-        "Opening your email application.";
+        "Opening your email application...";
+
     }
 
     window.location.href =
       `mailto:${recipient}` +
       `?subject=${subject}` +
-      `&body=${bodyText}`;
+      `&body=${emailBody}`;
+
   }
+
 );
 
 /*
-  Footer current year.
+  Current footer year.
 */
 
 const currentYear =
-  document.getElementById("current-year");
+  document.getElementById(
+    "current-year"
+  );
 
 if (currentYear) {
+
   currentYear.textContent =
-    String(new Date().getFullYear());
+    String(
+      new Date().getFullYear()
+    );
+
 }
