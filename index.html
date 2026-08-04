@@ -6,29 +6,41 @@
 
   <meta
     name="description"
-    content="SCLOM provides Microsoft Office, data entry, document formatting, web design and web development services."
+    content="SCLOM provides Microsoft Office, data entry, document formatting, web design, web development and virtual assistant services."
   />
 
-  <meta name="theme-color" content="#050505" />
+  <meta name="theme-color" content="#070707" />
 
   <meta
     property="og:title"
-    content="SCLOM | Office, Web Design & Development Services"
+    content="SCLOM | Office & Web Solutions"
   />
 
   <meta
     property="og:description"
-    content="Accurate office support, polished documents, responsive web design and reliable web development."
+    content="Professional office support, web design and responsive front-end development."
   />
 
   <meta property="og:type" content="website" />
 
-  <title>SCLOM | Office, Web Design & Development Services</title>
+  <title>SCLOM | Office & Web Solutions</title>
 
-  <link rel="icon" href="sclom-logo.png" type="image/png" />
+  <link
+    rel="icon"
+    href="sclom-logo.png"
+    type="image/png"
+  />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
@@ -40,24 +52,22 @@
 </head>
 
 <body>
+
   <a class="skip-link" href="#main-content">
     Skip to content
   </a>
 
-  <div class="site-noise" aria-hidden="true"></div>
+  <div class="page-noise" aria-hidden="true"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
 
-  <!-- Introduction -->
-  <div
-    class="brand-intro"
-    id="brand-intro"
-    aria-label="SCLOM introduction"
-  >
-    <div class="brand-intro-content">
+  <!-- One-Time Intro -->
+  <div class="brand-intro" id="brand-intro">
+
+    <div class="brand-intro__content">
+
       <img
         src="sclom-logo.png"
-        alt="SCLOM Logo"
-        class="brand-intro-logo"
+        alt="SCLOM logo"
       />
 
       <h1>SCLOM</h1>
@@ -68,30 +78,49 @@
         Linked Office Management
       </p>
 
-      <div class="brand-intro-line"></div>
+      <i></i>
+
     </div>
+
   </div>
 
   <!-- Header -->
   <header class="site-header" id="site-header">
+
     <div class="container nav-wrap">
 
-      <a class="brand" href="#home" aria-label="SCLOM home">
-        <span class="brand-mark">
-          <img src="sclom-logo.png" alt="SCLOM Logo" />
+      <a
+        class="brand"
+        href="#home"
+        aria-label="SCLOM home"
+      >
+
+        <span class="brand__logo">
+
+          <img
+            src="sclom-logo.png"
+            alt="SCLOM logo"
+          />
+
         </span>
 
-        <span class="brand-copy">
+        <span class="brand__text">
+
           <strong>SCLOM</strong>
-          <small>Office &amp; Web Solutions</small>
+
+          <small>
+            Office &amp; Web Solutions
+          </small>
+
         </span>
+
       </a>
 
       <button
         class="menu-toggle"
         type="button"
-        aria-controls="primary-nav"
         aria-expanded="false"
+        aria-controls="primary-nav"
         aria-label="Open navigation"
       >
         <span></span>
@@ -104,45 +133,71 @@
         id="primary-nav"
         aria-label="Primary navigation"
       >
-        <a href="#home" class="active">Home</a>
-        <a href="#services">Services</a>
-        <a href="#why-us">Why us</a>
-        <a href="#process">Process</a>
-        <a href="#work">Portfolio</a>
-        <a href="#about">About</a>
-        <a class="nav-cta" href="#contact">Let's Talk</a>
+
+        <a class="active" href="#home">
+          Home
+        </a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#why-us">
+          Why Us
+        </a>
+
+        <a href="#process">
+          Process
+        </a>
+
+        <a href="#portfolio">
+          Portfolio
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a class="nav-cta" href="#contact">
+          Let's Talk
+        </a>
+
       </nav>
 
     </div>
+
   </header>
 
   <main id="main-content">
 
-    <!-- Hero Section -->
-    <section class="hero section-pad" id="home">
+    <!-- Hero -->
+    <section class="hero" id="home">
 
       <div
-        class="hero-orbit orbit-one"
+        class="hero__orb hero__orb--one"
         aria-hidden="true"
       ></div>
 
       <div
-        class="hero-orbit orbit-two"
+        class="hero__orb hero__orb--two"
         aria-hidden="true"
       ></div>
 
       <div
-        class="hero-particles"
+        class="hero__dots"
         aria-hidden="true"
       ></div>
 
-      <div class="container hero-grid">
+      <div class="container hero__grid">
 
-        <div class="hero-copy reveal">
+        <div class="hero__copy reveal">
 
           <span class="eyebrow">
+
             <i></i>
+
             Office, Design &amp; Development
+
           </span>
 
           <h1>
@@ -150,129 +205,154 @@
             <span>finished.</span>
           </h1>
 
-          <p class="hero-lead">
-            From spreadsheets, documents and presentations to responsive
-            web design and development, SCLOM helps individuals and
-            businesses complete important work accurately and professionally.
+          <p>
+            From spreadsheets, presentations and document
+            formatting to responsive web design and development,
+            SCLOM helps individuals and businesses complete
+            essential work accurately and professionally.
           </p>
 
-          <div class="hero-actions">
+          <div class="hero__actions">
 
-            <a class="btn btn-primary" href="#services">
+            <a class="btn btn--gold" href="#services">
+
               Explore Services
 
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
+              <span>→</span>
+
             </a>
 
-            <a class="btn btn-ghost" href="#work">
-              <span class="play-icon">▶</span>
+            <a class="btn btn--dark" href="#portfolio">
+
               View Portfolio
+
             </a>
 
           </div>
 
-          <div
-            class="hero-trust"
-            aria-label="Service qualities"
-          >
-            <div>
-              <span>✓</span>
-              Responsive design
-            </div>
+          <div class="hero__trust">
 
-            <div>
-              <span>✓</span>
-              Accurate work
-            </div>
+            <span>
+              ✓ Responsive design
+            </span>
 
-            <div>
-              <span>✓</span>
-              Private handling
-            </div>
+            <span>
+              ✓ Accurate work
+            </span>
+
+            <span>
+              ✓ Confidential handling
+            </span>
+
           </div>
 
         </div>
 
         <div
-          class="hero-visual reveal"
-          aria-label="SCLOM workspace preview"
+          class="hero__visual reveal"
+          aria-label="SCLOM digital workspace illustration"
         >
 
-          <div class="gold-ring ring-back"></div>
-          <div class="gold-ring ring-front"></div>
-          <div class="hero-rock"></div>
+          <div class="hero-ring hero-ring--back"></div>
+          <div class="hero-ring hero-ring--front"></div>
+          <div class="workspace-shadow"></div>
 
           <div class="laptop">
 
-            <div class="laptop-screen">
+            <div class="laptop__screen">
 
-              <div class="screen-glare"></div>
+              <div class="laptop__glare"></div>
 
               <div class="screen-brand">
 
-                <span class="screen-logo">
+                <span>
+
                   <img
                     src="sclom-logo.png"
                     alt=""
                     aria-hidden="true"
                   />
+
                 </span>
 
                 <div>
-                  <strong>SCLOM</strong>
-                  <small>Office &amp; Web Solutions</small>
+
+                  <strong>
+                    SCLOM
+                  </strong>
+
+                  <small>
+                    Office &amp; Web Solutions
+                  </small>
+
                 </div>
 
               </div>
 
-              <div class="screen-dashboard">
+              <div class="screen-ui">
 
-                <div class="dash-top">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                <div class="screen-ui__top">
+
+                  <i></i>
+                  <i></i>
+                  <i></i>
+
                 </div>
 
-                <div class="dash-grid">
+                <div class="screen-ui__grid">
+
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
             </div>
 
-            <div class="laptop-base">
+            <div class="laptop__base">
               <span></span>
             </div>
 
           </div>
 
-          <div class="float-card float-card-one">
+          <div class="floating-card floating-card--top">
 
-            <span class="float-icon">✓</span>
+            <b>✓</b>
 
-            <div>
-              <strong>Responsive quality</strong>
-              <small>Mobile to desktop</small>
-            </div>
+            <span>
+
+              <strong>
+                Quality checked
+              </strong>
+
+              <small>
+                Before every delivery
+              </small>
+
+            </span>
 
           </div>
 
-          <div class="float-card float-card-two">
+          <div class="floating-card floating-card--bottom">
 
-            <span class="float-icon">◇</span>
+            <b>◇</b>
 
-            <div>
-              <strong>Files stay private</strong>
-              <small>Confidential handling</small>
-            </div>
+            <span>
+
+              <strong>
+                Responsive layouts
+              </strong>
+
+              <small>
+                Phone to desktop
+              </small>
+
+            </span>
 
           </div>
 
@@ -280,23 +360,15 @@
 
       </div>
 
-      <a
-        class="scroll-hint"
-        href="#services"
-        aria-label="Scroll to services"
-      >
-        <span></span>
-        Scroll
-      </a>
-
     </section>
 
-    <!-- Services Strip -->
+    <!-- Service Strip -->
     <section
-      class="logo-strip"
-      aria-label="Core services"
+      class="service-strip"
+      aria-label="Main services"
     >
-      <div class="container logo-strip-inner">
+
+      <div class="container service-strip__inner">
 
         <span>Microsoft Office</span>
         <i></i>
@@ -313,16 +385,17 @@
         <span>Virtual Assistance</span>
 
       </div>
+
     </section>
 
     <!-- Services -->
-    <section class="services section-pad" id="services">
+    <section class="section services" id="services">
 
       <div class="container">
 
-        <div class="section-heading centered reveal">
+        <div class="section-heading section-heading--center reveal">
 
-          <span class="section-kicker">
+          <span>
             What We Do
           </span>
 
@@ -332,81 +405,70 @@
 
           <p>
             Reliable support for office tasks, digital content,
-            responsive websites and ongoing business work.
+            websites and ongoing business work.
           </p>
 
         </div>
 
-        <div class="service-grid">
+        <div class="services-grid">
 
-          <!-- Excel -->
           <article class="service-card reveal">
 
-            <span class="card-number">01</span>
+            <em>01</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M4 4h16v16H4zM4 9h16M4 14h16M9 4v16M15 4v16"
-                />
-              </svg>
+            <div class="service-icon">
+              ▦
             </div>
 
-            <h3>Microsoft Excel</h3>
+            <h3>
+              Microsoft Excel
+            </h3>
 
             <p>
-              Spreadsheets, formulas, charts, dashboards,
-              data cleaning, analysis and professional reports.
+              Spreadsheets, formulas, dashboards, charts,
+              data cleaning and professional reports.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Word -->
           <article class="service-card reveal">
 
-            <span class="card-number">02</span>
+            <em>02</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M6 3h9l4 4v14H6zM15 3v5h4M9 12h7M9 16h7"
-                />
-              </svg>
+            <div class="service-icon">
+              W
             </div>
 
-            <h3>Microsoft Word</h3>
+            <h3>
+              Microsoft Word
+            </h3>
 
             <p>
-              Professional formatting, editing, resumes,
-              reports, letters, templates and business documents.
+              Editing, resumes, reports, letters,
+              templates and professional document formatting.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- PowerPoint -->
           <article class="service-card reveal">
 
-            <span class="card-number">03</span>
+            <em>03</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M4 4h16v12H4zM8 20h8M12 16v4M8 8h8M8 12h5"
-                />
-              </svg>
+            <div class="service-icon">
+              P
             </div>
 
-            <h3>PowerPoint</h3>
+            <h3>
+              PowerPoint
+            </h3>
 
             <p>
               Business presentations, pitch decks,
@@ -414,226 +476,176 @@
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Data Entry -->
           <article class="service-card reveal">
 
-            <span class="card-number">04</span>
+            <em>04</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-
-                <ellipse
-                  cx="12"
-                  cy="5"
-                  rx="7"
-                  ry="3"
-                />
-
-                <path
-                  d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"
-                />
-
-              </svg>
+            <div class="service-icon">
+              ⌨
             </div>
 
-            <h3>Data Entry</h3>
+            <h3>
+              Data Entry
+            </h3>
 
             <p>
               Accurate data entry, copy-paste work,
-              web research, data collection and file organization.
+              web research, collection and file organization.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- PDF Conversion -->
           <article class="service-card reveal">
 
-            <span class="card-number">05</span>
+            <em>05</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M7 3h8l4 4v14H7zM15 3v5h4M4 15h11M4 11h8"
-                />
-              </svg>
+            <div class="service-icon">
+              PDF
             </div>
 
-            <h3>PDF Conversion</h3>
+            <h3>
+              PDF Conversion
+            </h3>
 
             <p>
-              Convert PDFs to editable Word, Excel or PowerPoint
-              while preserving quality and layout.
+              Convert PDFs to editable Word, Excel or
+              PowerPoint while preserving the layout.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Document Formatting -->
           <article class="service-card reveal">
 
-            <span class="card-number">06</span>
+            <em>06</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M5 4h14M8 8h8M5 12h14M8 16h8M5 20h14"
-                />
-              </svg>
+            <div class="service-icon">
+              ≡
             </div>
 
-            <h3>Document Formatting</h3>
+            <h3>
+              Document Formatting
+            </h3>
 
             <p>
               Polished formatting for reports, resumes,
-              books, templates and professional documents.
+              books, templates and business documents.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Copy-Paste -->
           <article class="service-card reveal">
 
-            <span class="card-number">07</span>
+            <em>07</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-
-                <rect
-                  x="8"
-                  y="8"
-                  width="11"
-                  height="12"
-                  rx="2"
-                />
-
-                <path
-                  d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"
-                />
-
-              </svg>
+            <div class="service-icon">
+              ⧉
             </div>
 
-            <h3>Copy-Paste Tasks</h3>
+            <h3>
+              Copy-Paste Tasks
+            </h3>
 
             <p>
-              Fast data transfer, document editing
-              and file organization with careful attention.
+              Fast data transfer, document editing and
+              organized file handling with attention to detail.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Virtual Assistant -->
           <article class="service-card reveal">
 
-            <span class="card-number">08</span>
+            <em>08</em>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-
-                <circle
-                  cx="12"
-                  cy="8"
-                  r="4"
-                />
-
-                <path
-                  d="M4 21c.5-5 3.2-7 8-7s7.5 2 8 7M18 4l1 1 2-2"
-                />
-
-              </svg>
+            <div class="service-icon">
+              VA
             </div>
 
-            <h3>Virtual Assistant</h3>
+            <h3>
+              Virtual Assistant
+            </h3>
 
             <p>
-              Email support, web research, scheduling,
-              data handling and general admin assistance.
+              Email support, research, scheduling,
+              data handling and general administrative assistance.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Web Design -->
-          <article class="service-card web-card reveal">
+          <article class="service-card service-card--featured reveal">
 
-            <span class="featured-tag">New</span>
-            <span class="card-number">09</span>
+            <span class="service-tag">
+              New
+            </span>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M3 5h18v14H3zM3 9h18M7 7h.01M10 7h.01M13 7h.01M7 13h4M7 16h8M15 12h3v4h-3z"
-                />
-              </svg>
+            <em>09</em>
+
+            <div class="service-icon">
+              ◫
             </div>
 
-            <h3>Web Design</h3>
+            <h3>
+              Web Design
+            </h3>
 
             <p>
-              Modern, professional and mobile-friendly layouts
-              designed for businesses, portfolios and services.
+              Modern, professional and mobile-friendly website
+              layouts for businesses and portfolios.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
 
-          <!-- Web Development -->
-          <article class="service-card web-card featured reveal">
+          <article class="service-card service-card--featured reveal">
 
-            <span class="featured-tag">Popular</span>
-            <span class="card-number">10</span>
+            <span class="service-tag">
+              Popular
+            </span>
 
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M8 6l-5 6 5 6M16 6l5 6-5 6M14 3l-4 18"
-                />
-              </svg>
+            <em>10</em>
+
+            <div class="service-icon">
+              &lt;/&gt;
             </div>
 
-            <h3>Web Development</h3>
+            <h3>
+              Web Development
+            </h3>
 
             <p>
               Responsive front-end websites using HTML,
-              CSS and JavaScript with clean, maintainable code.
+              CSS and JavaScript with clean code.
             </p>
 
             <a href="#contact">
-              Get Started
-              <span>→</span>
+              Get Started →
             </a>
 
           </article>
@@ -645,12 +657,11 @@
     </section>
 
     <!-- Statistics -->
-    <section class="stats-section">
+    <section class="stats">
 
       <div class="container stats-grid reveal">
 
-        <div class="stat-item">
-          <span class="stat-icon">☺</span>
+        <div>
 
           <strong
             data-count="150"
@@ -659,11 +670,13 @@
             0
           </strong>
 
-          <small>Tasks Supported</small>
+          <span>
+            Tasks Supported
+          </span>
+
         </div>
 
-        <div class="stat-item">
-          <span class="stat-icon">▣</span>
+        <div>
 
           <strong
             data-count="300"
@@ -672,11 +685,13 @@
             0
           </strong>
 
-          <small>Files Completed</small>
+          <span>
+            Files Completed
+          </span>
+
         </div>
 
-        <div class="stat-item">
-          <span class="stat-icon">♛</span>
+        <div>
 
           <strong
             data-count="10"
@@ -685,11 +700,13 @@
             0
           </strong>
 
-          <small>Core Services</small>
+          <span>
+            Core Services
+          </span>
+
         </div>
 
-        <div class="stat-item">
-          <span class="stat-icon">↗</span>
+        <div>
 
           <strong
             data-count="100"
@@ -698,57 +715,65 @@
             0
           </strong>
 
-          <small>Quality Focus</small>
+          <span>
+            Quality Focus
+          </span>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="why section-pad" id="why-us">
+    <!-- Why Us -->
+    <section class="section why" id="why-us">
 
       <div class="container split-grid">
 
-        <div class="studio-visual reveal">
+        <div class="why-visual reveal">
 
           <div class="monitor-scene">
 
             <div class="monitor">
 
-              <div class="monitor-bar">
+              <div class="monitor__top">
+
                 <i></i>
                 <i></i>
                 <i></i>
+
               </div>
 
-              <div class="code-lines">
-                <span style="--w:72%"></span>
-                <span style="--w:48%"></span>
-                <span style="--w:84%"></span>
-                <span style="--w:58%"></span>
-                <span style="--w:91%"></span>
-                <span style="--w:63%"></span>
-                <span style="--w:78%"></span>
+              <div class="monitor__code">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
               </div>
 
-              <div class="sheet-preview">
+              <div class="monitor__cards">
+
                 <i></i>
                 <i></i>
                 <i></i>
                 <i></i>
+
               </div>
 
             </div>
 
             <div class="desk"></div>
-            <div class="desk-glow"></div>
 
           </div>
 
-          <div class="experience-badge">
+          <div class="skills-badge">
 
-            <strong>10</strong>
+            <strong>
+              10
+            </strong>
 
             <span>
               Core
@@ -762,87 +787,107 @@
 
         <div class="why-copy reveal">
 
-          <span class="section-kicker">
-            Why Choose SCLOM
-          </span>
+          <div class="section-heading">
 
-          <h2>
-            Work that looks right—and works right.
-          </h2>
+            <span>
+              Why Choose SCLOM
+            </span>
 
-          <p>
-            Small errors, weak layouts and unresponsive pages
-            cost time and trust. We focus on the details so
-            your files and websites are organized, polished
-            and ready to use.
-          </p>
-
-          <div class="benefit-list">
-
-            <div>
-
-              <span>✓</span>
-
-              <p>
-                <strong>Accuracy first</strong>
-
-                <small>
-                  Every file and page is checked for structure,
-                  formatting and consistency.
-                </small>
-              </p>
-
-            </div>
-
-            <div>
-
-              <span>✓</span>
-
-              <p>
-                <strong>Responsive by default</strong>
-
-                <small>
-                  Web layouts adapt cleanly to phones,
-                  tablets, laptops and desktop screens.
-                </small>
-              </p>
-
-            </div>
-
-            <div>
-
-              <span>✓</span>
-
-              <p>
-                <strong>On-time delivery</strong>
-
-                <small>
-                  Clear deadlines and responsive communication
-                  throughout the project.
-                </small>
-              </p>
-
-            </div>
-
-            <div>
-
-              <span>✓</span>
-
-              <p>
-                <strong>Confidential handling</strong>
-
-                <small>
-                  Your documents, content and business
-                  information stay private.
-                </small>
-              </p>
-
-            </div>
+            <h2>
+              Work that looks right—and works right.
+            </h2>
 
           </div>
 
-          <a class="btn btn-primary" href="#about">
-            Know More About Us
+          <p>
+            Small formatting errors, weak layouts and unresponsive
+            pages cost time and trust. We focus on the details
+            so your files and websites remain clean, usable
+            and professional.
+          </p>
+
+          <div class="benefits">
+
+            <article>
+
+              <b>✓</b>
+
+              <div>
+
+                <strong>
+                  Accuracy first
+                </strong>
+
+                <p>
+                  Every file and page is checked for structure,
+                  formatting and consistency.
+                </p>
+
+              </div>
+
+            </article>
+
+            <article>
+
+              <b>✓</b>
+
+              <div>
+
+                <strong>
+                  Responsive by default
+                </strong>
+
+                <p>
+                  Website layouts adapt to phones, tablets,
+                  laptops and desktop screens.
+                </p>
+
+              </div>
+
+            </article>
+
+            <article>
+
+              <b>✓</b>
+
+              <div>
+
+                <strong>
+                  On-time delivery
+                </strong>
+
+                <p>
+                  Clear deadlines and responsive communication
+                  throughout the project.
+                </p>
+
+              </div>
+
+            </article>
+
+            <article>
+
+              <b>✓</b>
+
+              <div>
+
+                <strong>
+                  Confidential handling
+                </strong>
+
+                <p>
+                  Your files, content and business information
+                  remain private.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+          <a class="btn btn--gold" href="#contact">
+            Start a Project
           </a>
 
         </div>
@@ -852,13 +897,13 @@
     </section>
 
     <!-- Process -->
-    <section class="process section-pad" id="process">
+    <section class="section process" id="process">
 
       <div class="container">
 
-        <div class="section-heading centered reveal">
+        <div class="section-heading section-heading--center reveal">
 
-          <span class="section-kicker">
+          <span>
             Simple Process
           </span>
 
@@ -868,7 +913,7 @@
 
           <p>
             Four clear steps keep every office or website
-            project organized and easy to follow.
+            project organized.
           </p>
 
         </div>
@@ -877,52 +922,64 @@
 
           <article class="process-card reveal">
 
-            <span>01</span>
+            <span>
+              01
+            </span>
 
-            <h3>Share Your Requirements</h3>
+            <h3>
+              Share Requirements
+            </h3>
 
             <p>
-              Tell us what you need, the preferred style,
-              files and deadline.
+              Send the task, files, preferred style and deadline.
             </p>
 
           </article>
 
           <article class="process-card reveal">
 
-            <span>02</span>
+            <span>
+              02
+            </span>
 
-            <h3>Plan &amp; Confirm</h3>
+            <h3>
+              Plan &amp; Confirm
+            </h3>
 
             <p>
-              We confirm the scope, structure and best
-              approach before work begins.
+              We confirm the scope, structure and best approach.
             </p>
 
           </article>
 
           <article class="process-card reveal">
 
-            <span>03</span>
+            <span>
+              03
+            </span>
 
-            <h3>Create &amp; Review</h3>
+            <h3>
+              Create &amp; Review
+            </h3>
 
             <p>
-              Your work is completed, tested and checked
-              across the required formats or screens.
+              The work is completed, tested and quality checked.
             </p>
 
           </article>
 
           <article class="process-card reveal">
 
-            <span>04</span>
+            <span>
+              04
+            </span>
 
-            <h3>Final Delivery</h3>
+            <h3>
+              Final Delivery
+            </h3>
 
             <p>
-              You receive clean, organized and ready-to-use
-              files with revisions where agreed.
+              You receive organized and ready-to-use final files.
             </p>
 
           </article>
@@ -934,15 +991,15 @@
     </section>
 
     <!-- Portfolio -->
-    <section class="work section-pad" id="work">
+    <section class="section portfolio" id="portfolio">
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-heading section-heading--row reveal">
 
           <div>
 
-            <span class="section-kicker">
+            <span>
               Selected Work
             </span>
 
@@ -953,45 +1010,48 @@
           </div>
 
           <p>
-            Examples of the type of office, design and
-            development work SCLOM can support.
+            Examples of office, design and development work
+            SCLOM can support.
           </p>
 
         </div>
 
-        <div class="work-grid">
+        <div class="portfolio-grid">
 
-          <article class="work-card work-card-large reveal">
+          <article class="project project--large reveal">
 
-            <div
-              class="work-preview dashboard-preview"
-              aria-hidden="true"
-            >
+            <div class="project-preview dashboard-preview">
 
-              <div class="preview-sidebar"></div>
+              <div class="dashboard-sidebar"></div>
 
-              <div class="preview-content">
+              <div class="dashboard-main">
 
                 <i></i>
                 <i></i>
 
-                <div class="preview-chart"></div>
+                <div class="chart"></div>
 
-                <div class="preview-row">
+                <div class="mini-boxes">
+
                   <span></span>
                   <span></span>
                   <span></span>
+
                 </div>
 
               </div>
 
             </div>
 
-            <div class="work-copy">
+            <div class="project-copy">
 
-              <span>Excel &amp; Reporting</span>
+              <span>
+                Excel &amp; Reporting
+              </span>
 
-              <h3>Business Dashboard</h3>
+              <h3>
+                Business Dashboard
+              </h3>
 
               <p>
                 Clean data structure, visual summaries
@@ -1002,61 +1062,65 @@
 
           </article>
 
-          <article class="work-card reveal">
+          <article class="project reveal">
 
-            <div
-              class="work-preview website-preview"
-              aria-hidden="true"
-            >
+            <div class="project-preview website-preview">
 
-              <div class="mini-nav"></div>
-              <div class="mini-hero"></div>
+              <i></i>
 
-              <div class="mini-cards">
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
+              <div></div>
+
+              <span></span>
+              <span></span>
+              <span></span>
 
             </div>
 
-            <div class="work-copy">
+            <div class="project-copy">
 
-              <span>Web Design</span>
+              <span>
+                Web Design
+              </span>
 
-              <h3>Responsive Business Website</h3>
+              <h3>
+                Responsive Business Website
+              </h3>
 
               <p>
-                Professional layouts that adapt from
-                mobile screens to large desktops.
+                Professional layouts that adapt from mobile
+                screens to large desktops.
               </p>
 
             </div>
 
           </article>
 
-          <article class="work-card reveal">
+          <article class="project reveal">
 
-            <div
-              class="work-preview document-preview"
-              aria-hidden="true"
-            >
+            <div class="project-preview document-preview">
 
-              <div class="paper">
+              <div class="document-sheet">
+
                 <i></i>
                 <i></i>
                 <i></i>
                 <i></i>
+
                 <span></span>
+
               </div>
 
             </div>
 
-            <div class="work-copy">
+            <div class="project-copy">
 
-              <span>Documents</span>
+              <span>
+                Documents
+              </span>
 
-              <h3>Formatted Business Report</h3>
+              <h3>
+                Formatted Business Report
+              </h3>
 
               <p>
                 Consistent typography, spacing, sections
@@ -1074,54 +1138,70 @@
     </section>
 
     <!-- About -->
-    <section class="about section-pad" id="about">
+    <section class="section about" id="about">
 
       <div class="container about-grid">
 
         <div class="about-copy reveal">
 
-          <span class="section-kicker">
-            About SCLOM
-          </span>
+          <div class="section-heading">
 
-          <h2>
-            Reliable support for office work and the web.
-          </h2>
+            <span>
+              About SCLOM
+            </span>
+
+            <h2>
+              Reliable support for office work and the web.
+            </h2>
+
+          </div>
 
           <p>
             SCLOM stands for Smart Centralized &amp; Linked
-            Office Management. We combine careful office
-            support with practical web design and
-            front-end development.
+            Office Management. We combine careful office support
+            with practical web design and front-end development.
           </p>
 
           <p>
-            Our goal is simple: deliver work that is accurate,
+            Our goal is to deliver work that is accurate,
             professional, responsive and easy for clients
             to use after handover.
           </p>
 
           <div class="about-points">
-            <span>Organized source files</span>
-            <span>Mobile-friendly websites</span>
-            <span>Clear communication</span>
-            <span>Practical revisions</span>
+
+            <span>
+              Organized source files
+            </span>
+
+            <span>
+              Mobile-friendly websites
+            </span>
+
+            <span>
+              Clear communication
+            </span>
+
+            <span>
+              Practical revisions
+            </span>
+
           </div>
 
         </div>
 
-        <div class="about-panel reveal">
+        <div class="about-card reveal">
 
-          <div class="about-logo">
-            <img
-              src="sclom-logo.png"
-              alt="SCLOM Logo"
-            />
-          </div>
+          <img
+            src="sclom-logo.png"
+            alt="SCLOM logo"
+          />
 
-          <strong>Smart Centralized</strong>
+          <strong>
+            Smart Centralized
+          </strong>
 
-          <span>&amp;</span>
+          <b>&amp;</b>
 
           <strong>
             Linked Office Management
@@ -1138,51 +1218,86 @@
     </section>
 
     <!-- Contact -->
-    <section class="contact section-pad" id="contact">
+    <section class="section contact" id="contact">
 
       <div class="container contact-grid">
 
         <div class="contact-copy reveal">
 
-          <span class="section-kicker">
-            Let's Work Together
-          </span>
+          <div class="section-heading">
 
-          <h2>
-            Tell us what you need.
-          </h2>
+            <span>
+              Let's Work Together
+            </span>
+
+            <h2>
+              Tell us what you need.
+            </h2>
+
+          </div>
 
           <p>
             Share your office task, website idea or development
-            requirement. Replace the sample email and WhatsApp
-            number with your real details before publishing.
+            requirement using email, phone, WhatsApp or the form.
           </p>
 
-          <div class="contact-list">
+          <div class="contact-links">
 
-            <a href="mailto:your-email@example.com">
+            <a href="mailto:naqvishahvlog@gmail.com">
 
-              <span>✉</span>
+              <b>✉</b>
 
-              <div>
-                <small>Email</small>
-                <strong>your-email@example.com</strong>
-              </div>
+              <span>
+
+                <small>
+                  Email
+                </small>
+
+                <strong>
+                  naqvishahvlog@gmail.com
+                </strong>
+
+              </span>
+
+            </a>
+
+            <a href="tel:+923081600067">
+
+              <b>☎</b>
+
+              <span>
+
+                <small>
+                  Phone
+                </small>
+
+                <strong>
+                  0308 1600067
+                </strong>
+
+              </span>
 
             </a>
 
             <a
-              href="https://wa.me/923081600067"
+              href="https://wa.me/923081600067?text=Hello%20SCLOM%2C%20I%20want%20to%20discuss%20a%20project."
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
 
-              <span>◉</span>
+              <b>◉</b>
 
-              <div>
-                <small>WhatsApp</small>
-                <strong>+92 300000000</strong>
-              </div>
+              <span>
+
+                <small>
+                  WhatsApp
+                </small>
+
+                <strong>
+                  0308 1600067
+                </strong>
+
+              </span>
 
             </a>
 
@@ -1199,47 +1314,75 @@
           <div class="form-row">
 
             <label>
+
               Full Name
 
               <input
                 type="text"
                 name="name"
-                autocomplete="name"
                 placeholder="Your name"
+                autocomplete="name"
                 required
               />
+
             </label>
 
             <label>
+
               Email Address
 
               <input
                 type="email"
                 name="email"
+                placeholder="you@example.com"
                 autocomplete="email"
-                placeholder="your@example.com"
                 required
               />
+
             </label>
 
           </div>
 
           <label>
+
             Service
 
             <select name="service" required>
-              <option value="">Select a service</option>
-              <option>Microsoft Office</option>
-              <option>Data Entry</option>
-              <option>PDF / Document Formatting</option>
-              <option>Virtual Assistant</option>
-              <option>Web Design</option>
-              <option>Web Development</option>
+
+              <option value="">
+                Select a service
+              </option>
+
+              <option>
+                Microsoft Office
+              </option>
+
+              <option>
+                Data Entry
+              </option>
+
+              <option>
+                PDF / Document Formatting
+              </option>
+
+              <option>
+                Virtual Assistant
+              </option>
+
+              <option>
+                Web Design
+              </option>
+
+              <option>
+                Web Development
+              </option>
+
             </select>
 
           </label>
 
           <label>
+
             Project Details
 
             <textarea
@@ -1248,14 +1391,14 @@
               placeholder="Describe your project, deadline and requirements"
               required
             ></textarea>
+
           </label>
 
           <button
-            class="btn btn-primary"
+            class="btn btn--gold"
             type="submit"
           >
-            Prepare Email
-            <span>→</span>
+            Prepare Email →
           </button>
 
           <p
@@ -1273,21 +1416,33 @@
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="footer">
 
     <div class="container footer-grid">
 
       <div>
 
-        <a class="brand footer-brand" href="#home">
+        <a class="brand" href="#home">
 
-          <span class="brand-mark">
-            <img src="sclom-logo.png" alt="SCLOM Logo" />
+          <span class="brand__logo">
+
+            <img
+              src="sclom-logo.png"
+              alt="SCLOM logo"
+            />
+
           </span>
 
-          <span class="brand-copy">
-            <strong>SCLOM</strong>
-            <small>Office &amp; Web Solutions</small>
+          <span class="brand__text">
+
+            <strong>
+              SCLOM
+            </strong>
+
+            <small>
+              Office &amp; Web Solutions
+            </small>
+
           </span>
 
         </a>
@@ -1301,23 +1456,49 @@
 
       <div class="footer-links">
 
-        <strong>Navigation</strong>
+        <strong>
+          Navigation
+        </strong>
 
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#work">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#process">
+          Process
+        </a>
+
+        <a href="#portfolio">
+          Portfolio
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
 
       </div>
 
       <div class="footer-links">
 
-        <strong>Services</strong>
+        <strong>
+          Services
+        </strong>
 
-        <a href="#services">Microsoft Office</a>
-        <a href="#services">Data Entry</a>
-        <a href="#services">Web Design</a>
-        <a href="#services">Web Development</a>
+        <a href="#services">
+          Microsoft Office
+        </a>
+
+        <a href="#services">
+          Data Entry
+        </a>
+
+        <a href="#services">
+          Web Design
+        </a>
+
+        <a href="#services">
+          Web Development
+        </a>
 
       </div>
 
@@ -1326,7 +1507,8 @@
     <div class="container footer-bottom">
 
       <span>
-        © <span id="current-year"></span>
+        ©
+        <span id="current-year"></span>
         SCLOM. All rights reserved.
       </span>
 
@@ -1337,6 +1519,29 @@
     </div>
 
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a
+    class="whatsapp-button"
+    href="https://wa.me/923081600067?text=Hello%20SCLOM%2C%20I%20want%20to%20discuss%20a%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with SCLOM on WhatsApp"
+  >
+
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+
+      <path
+        d="M16 3C8.83 3 3 8.66 3 15.63c0 2.46.73 4.86 2.1 6.89L3.7 29l6.7-1.35A13.2 13.2 0 0 0 16 28.88c7.17 0 13-5.66 13-12.63S23.17 3 16 3Zm0 23.7c-1.86 0-3.68-.48-5.27-1.39l-.38-.22-3.98.8.84-3.84-.25-.4a10.35 10.35 0 0 1-1.68-5.62C5.28 10.27 10.09 5.6 16 5.6s10.72 4.67 10.72 10.43S21.91 26.7 16 26.7Zm5.88-7.83c-.32-.16-1.9-.91-2.2-1.02-.29-.11-.5-.16-.71.16-.21.31-.82 1.02-1 1.23-.18.21-.37.24-.69.08-.32-.16-1.35-.48-2.57-1.54a9.6 9.6 0 0 1-1.78-2.15c-.19-.31-.02-.48.14-.64.15-.14.32-.37.48-.55.16-.18.21-.31.32-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.66-.98-2.28-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.39-.29.31-1.11 1.05-1.11 2.57 0 1.52 1.14 2.98 1.3 3.19.16.21 2.24 3.32 5.43 4.66.76.32 1.35.51 1.81.65.76.23 1.45.2 2 .12.61-.09 1.9-.75 2.17-1.48.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.37Z"
+      />
+
+    </svg>
+
+    <span>
+      WhatsApp
+    </span>
+
+  </a>
 
 </body>
 </html>
