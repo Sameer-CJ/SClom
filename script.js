@@ -1,97 +1,346 @@
-'use strict';
+"use strict";
 
-const header = document.querySelector('.site-header');
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.primary-nav');
+const body = document.body;
+
+const header = document.getElementById("site-header");
+
+const menuButton = document.querySelector(".menu-toggle");
+
+const navigation = document.getElementById("primary-nav");
 
 const navLinks = [
-  ...document.querySelectorAll('.primary-nav a[href^="#"]')
+  ...document.querySelectorAll(
+    '.primary-nav a[href^="#"]'
+  )
 ];
 
-const backToTop = document.querySelector('.back-to-top');
-const cursorGlow = document.querySelector('.cursor-glow');
-const projectForm = document.querySelector('#project-form');
-const formNote = document.querySelector('#form-note');
+const intro = document.getElementById("brand-intro");
 
-const whatsappNumber = '923081600067';
+const cursorGlow = document.querySelector(".cursor-glow");
 
-/* =========================
-   Mobile Navigation
-========================= */
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-function closeMenu() {
-  nav?.classList.remove('open');
+/*
+  One-time introduction.
 
-  menuToggle?.setAttribute('aria-expanded', 'false');
-  menuToggle?.setAttribute('aria-label', 'Open navigation');
+  Introduction har browser session mein
+  sirf ek baar show hogi.
+*/
 
-  document.body.classList.remove('menu-open');
-}
-
-menuToggle?.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-
-  menuToggle.setAttribute(
-    'aria-label',
-    isOpen ? 'Close navigation' : 'Open navigation'
+if (intro) {
+  const introSeen = sessionStorage.getItem(
+    "sclomIntroSeen"
   );
 
-  document.body.classList.toggle('menu-open', isOpen);
+  if (introSeen || reduceMotion) {
+    intro.remove();
+  } else {
+    window.setTimeout(() => {
+      intro.classList.add("hide");
+
+      sessionStorage.setItem(
+        "sclomIntroSeen",
+        "true"
+      );
+
+      window.setTimeout(() => {
+        intro.remove();
+      }, 700);
+    }, 1800);
+  }
+}
+
+/*
+  Mobile navigation.
+*/
+
+function closeMenu() {
+  if (!menuButton || !navigation) {
+    return;
+  }
+
+  menuButton.classList.remove("active");
+
+  navigation.classList.remove("open");
+
+  header?.classList.remove("menu-active");
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  menuButton.setAttribute(
+    "aria-label",
+    "Open navigation"
+  );
+
+  body.classList.remove("menu-open");
+}
+
+function openMenu() {
+  if (!menuButton || !navigation) {
+    return;
+  }
+
+  menuButton.classList.add("active");
+
+  navigation.classList.add("open");
+
+  header?.classList.add("menu-active");
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  menuButton.setAttribute(
+    "aria-label",
+    "Close navigation"
+  );
+
+  body.classList.add("menu-open");
+}
+
+menuButton?.addEventListener("click", () => {
+  const isOpen =
+    navigation?.classList.contains("open");
+
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
 
 navLinks.forEach((link) => {
-  link.addEventListener('click', closeMenu);
+  link.addEventListener("click", closeMenu);
 });
 
-window.addEventListener('resize', () => {
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
+
+window.addEventListener("resize", () => {
   if (window.innerWidth > 900) {
     closeMenu();
   }
 });
 
-/* =========================
-   Header and Back-to-Top
-========================= */
+/*
+  Header background after scrolling.
+*/
 
 function updateHeader() {
-  const isScrolled = window.scrollY > 24;
-
-  header?.classList.toggle('scrolled', isScrolled);
-
-  backToTop?.classList.toggle(
-    'visible',
-    window.scrollY > 600
+  header?.classList.toggle(
+    "scrolled",
+    window.scrollY > 20
   );
 }
 
-window.addEventListener('scroll', updateHeader, {
-  passive: true
-});
-
 updateHeader();
 
-backToTop?.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+window.addEventListener(
+  "scroll",
+  updateHeader,
+  {
+    passive: true
+  }
+);
 
-/* =========================
-   Cursor Glow Effect
-========================= */
+/*
+  Active navigation link.
+*/
+
+const sections = navLinks
+  .map((link) => {
+    const href = link.getAttribute("href");
+
+    if (!href) {
+      return null;
+    }
+
+    return document.querySelector(href);
+  })
+  .filter(Boolean);
+
+if (
+  "IntersectionObserver" in window &&
+  sections.length
+) {
+  const sectionObserver =
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          const currentSection =
+            `#${entry.target.id}`;
+
+          navLinks.forEach((link) => {
+            const linkTarget =
+              link.getAttribute("href");
+
+            link.classList.toggle(
+              "active",
+              linkTarget === currentSection
+            );
+          });
+        });
+      },
+      {
+        rootMargin: "-30% 0px -60% 0px",
+        threshold: 0.01
+      }
+    );
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+}
+
+/*
+  Reveal animations.
+*/
+
+const revealItems =
+  document.querySelectorAll(".reveal");
+
+if (
+  reduceMotion ||
+  !("IntersectionObserver" in window)
+) {
+  revealItems.forEach((item) => {
+    item.classList.add("visible");
+  });
+} else {
+  const revealObserver =
+    new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add(
+            "visible"
+          );
+
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px"
+      }
+    );
+
+  revealItems.forEach((item) => {
+    revealObserver.observe(item);
+  });
+}
+
+/*
+  Animated statistics.
+*/
+
+const counters =
+  document.querySelectorAll("[data-count]");
+
+function animateCounter(element) {
+  const target = Number(
+    element.dataset.count || 0
+  );
+
+  const suffix =
+    element.dataset.suffix || "";
+
+  const duration =
+    reduceMotion ? 0 : 1200;
+
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const progress =
+      duration === 0
+        ? 1
+        : Math.min(
+            (currentTime - startTime) /
+              duration,
+            1
+          );
+
+    const eased =
+      1 - Math.pow(1 - progress, 3);
+
+    const currentNumber =
+      Math.round(target * eased);
+
+    element.textContent =
+      `${currentNumber}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+if ("IntersectionObserver" in window) {
+  const counterObserver =
+    new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          animateCounter(entry.target);
+
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.5
+      }
+    );
+
+  counters.forEach((counter) => {
+    counterObserver.observe(counter);
+  });
+} else {
+  counters.forEach((counter) => {
+    animateCounter(counter);
+  });
+}
+
+/*
+  Cursor glow.
+
+  Mobile devices par cursor glow
+  automatically disable rahega.
+*/
 
 if (
   cursorGlow &&
-  window.matchMedia('(pointer: fine)').matches
+  window.matchMedia("(pointer: fine)").matches &&
+  !reduceMotion
 ) {
   window.addEventListener(
-    'pointermove',
+    "pointermove",
     (event) => {
-      cursorGlow.style.left = `${event.clientX}px`;
-      cursorGlow.style.top = `${event.clientY}px`;
+      cursorGlow.style.left =
+        `${event.clientX}px`;
+
+      cursorGlow.style.top =
+        `${event.clientY}px`;
     },
     {
       passive: true
@@ -99,432 +348,91 @@ if (
   );
 }
 
-/* =========================
-   Scroll Reveal Animations
-========================= */
+/*
+  Contact form.
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+  Neeche recipient mein apna asli
+  business email address likhein.
+*/
 
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    });
-  },
-  {
-    threshold: 0.13,
-    rootMargin: '0px 0px -40px'
-  }
-);
+const contactForm =
+  document.getElementById("contact-form");
 
-document
-  .querySelectorAll('.reveal')
-  .forEach((element, index) => {
-    element.style.transitionDelay =
-      `${Math.min(index % 4, 3) * 70}ms`;
+const formStatus =
+  document.getElementById("form-status");
 
-    revealObserver.observe(element);
-  });
-
-/* =========================
-   Active Navigation Links
-========================= */
-
-const pageSections = [
-  ...document.querySelectorAll('main section[id]')
-];
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
-
-      const currentSectionId = entry.target.id;
-
-      navLinks.forEach((link) => {
-        const linkSection =
-          link.getAttribute('href');
-
-        link.classList.toggle(
-          'active',
-          linkSection === `#${currentSectionId}`
-        );
-      });
-    });
-  },
-  {
-    threshold: 0.42,
-    rootMargin: '-70px 0px -35% 0px'
-  }
-);
-
-pageSections.forEach((section) => {
-  sectionObserver.observe(section);
-});
-
-/* =========================
-   Animated Statistics
-========================= */
-
-const statItems =
-  document.querySelectorAll('[data-count]');
-
-let countersStarted = false;
-
-function animateCounter(element) {
-  const target =
-    Number(element.dataset.count || 0);
-
-  const suffix =
-    element.dataset.suffix || '';
-
-  const duration = 1500;
-  const startTime = performance.now();
-
-  function updateCounter(currentTime) {
-    const progress = Math.min(
-      (currentTime - startTime) / duration,
-      1
-    );
-
-    const easedProgress =
-      1 - Math.pow(1 - progress, 3);
-
-    const currentValue =
-      Math.round(target * easedProgress);
-
-    element.textContent =
-      `${currentValue}${suffix}`;
-
-    if (progress < 1) {
-      requestAnimationFrame(updateCounter);
-    }
-  }
-
-  requestAnimationFrame(updateCounter);
-}
-
-const statsSection =
-  document.querySelector('.stats-section');
-
-if (statsSection) {
-  const counterObserver =
-    new IntersectionObserver(
-      (entries, observer) => {
-        const sectionIsVisible =
-          entries.some(
-            (entry) => entry.isIntersecting
-          );
-
-        if (
-          sectionIsVisible &&
-          !countersStarted
-        ) {
-          countersStarted = true;
-
-          statItems.forEach(animateCounter);
-
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.4
-      }
-    );
-
-  counterObserver.observe(statsSection);
-}
-
-/* =========================
-   Portfolio Filters
-========================= */
-
-const filterButtons =
-  document.querySelectorAll('.filter-btn');
-
-const projectCards =
-  document.querySelectorAll('.project-card');
-
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const selectedFilter =
-      button.dataset.filter;
-
-    filterButtons.forEach((item) => {
-      item.classList.remove('active');
-    });
-
-    button.classList.add('active');
-
-    projectCards.forEach((card) => {
-      const projectCategory =
-        card.dataset.category;
-
-      const matchesFilter =
-        selectedFilter === 'all' ||
-        projectCategory === selectedFilter;
-
-      card.classList.toggle(
-        'hidden',
-        !matchesFilter
-      );
-
-      if (matchesFilter) {
-        card.animate(
-          [
-            {
-              opacity: 0,
-              transform: 'translateY(14px)'
-            },
-            {
-              opacity: 1,
-              transform: 'translateY(0)'
-            }
-          ],
-          {
-            duration: 330,
-            easing: 'ease-out'
-          }
-        );
-      }
-    });
-  });
-});
-
-/* =========================
-   Testimonial Slider
-========================= */
-
-const testimonialCards = [
-  ...document.querySelectorAll(
-    '.testimonial-card'
-  )
-];
-
-const dotsContainer =
-  document.querySelector('.slider-dots');
-
-const previousButton =
-  document.querySelector('.slider-btn.prev');
-
-const nextButton =
-  document.querySelector('.slider-btn.next');
-
-let currentTestimonial = 0;
-let sliderTimer;
-
-function showTestimonial(index) {
-  if (!testimonialCards.length) {
-    return;
-  }
-
-  currentTestimonial =
-    (index + testimonialCards.length) %
-    testimonialCards.length;
-
-  testimonialCards.forEach(
-    (card, cardIndex) => {
-      card.classList.toggle(
-        'active',
-        cardIndex === currentTestimonial
-      );
-    }
-  );
-
-  dotsContainer
-    ?.querySelectorAll('button')
-    .forEach((dot, dotIndex) => {
-      const isCurrent =
-        dotIndex === currentTestimonial;
-
-      dot.classList.toggle(
-        'active',
-        isCurrent
-      );
-
-      dot.setAttribute(
-        'aria-current',
-        isCurrent ? 'true' : 'false'
-      );
-    });
-}
-
-function resetSliderTimer() {
-  window.clearInterval(sliderTimer);
-
-  sliderTimer = window.setInterval(() => {
-    showTestimonial(
-      currentTestimonial + 1
-    );
-  }, 6500);
-}
-
-if (
-  dotsContainer &&
-  testimonialCards.length
-) {
-  testimonialCards.forEach(
-    (_, index) => {
-      const dot =
-        document.createElement('button');
-
-      dot.type = 'button';
-
-      dot.setAttribute(
-        'aria-label',
-        `Show testimonial ${index + 1}`
-      );
-
-      dot.addEventListener('click', () => {
-        showTestimonial(index);
-        resetSliderTimer();
-      });
-
-      dotsContainer.appendChild(dot);
-    }
-  );
-
-  showTestimonial(0);
-  resetSliderTimer();
-}
-
-previousButton?.addEventListener(
-  'click',
-  () => {
-    showTestimonial(
-      currentTestimonial - 1
-    );
-
-    resetSliderTimer();
-  }
-);
-
-nextButton?.addEventListener(
-  'click',
-  () => {
-    showTestimonial(
-      currentTestimonial + 1
-    );
-
-    resetSliderTimer();
-  }
-);
-
-/* =========================
-   WhatsApp Contact Form
-========================= */
-
-projectForm?.addEventListener(
-  'submit',
+contactForm?.addEventListener(
+  "submit",
   (event) => {
     event.preventDefault();
 
-    const name = document
-      .querySelector('#name')
-      ?.value.trim();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
 
-    const email = document
-      .querySelector('#email')
-      ?.value.trim();
-
-    const service = document
-      .querySelector('#service')
-      ?.value.trim();
-
-    const details = document
-      .querySelector('#details')
-      ?.value.trim();
-
-    if (!name || !service || !details) {
-      if (formNote) {
-        formNote.textContent =
-          'Please enter your name, select a service and add project details.';
-
-        formNote.classList.add('error');
+      if (formStatus) {
+        formStatus.textContent =
+          "Please complete all required fields.";
       }
 
       return;
     }
 
-    if (formNote) {
-      formNote.classList.remove('error');
+    const data =
+      new FormData(contactForm);
 
-      formNote.textContent =
-        'Opening WhatsApp with your project details…';
+    const name =
+      String(data.get("name") || "").trim();
+
+    const email =
+      String(data.get("email") || "").trim();
+
+    const service =
+      String(data.get("service") || "").trim();
+
+    const message =
+      String(data.get("message") || "").trim();
+
+    /*
+      Is sample email ko apne
+      real email se replace karein.
+    */
+
+    const recipient =
+      "naqvishahvlog@gmail.com";
+
+    const subject =
+      encodeURIComponent(
+        `SCLOM enquiry: ${service}`
+      );
+
+    const bodyText =
+      encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Service: ${service}\n\n` +
+        `Project details:\n${message}`
+      );
+
+    if (formStatus) {
+      formStatus.textContent =
+        "Opening your email application.";
     }
 
-    const message = [
-      'Hello SCLOM, I would like to discuss a project.',
-      '',
-      `Name: ${name}`,
-      `Email: ${email || 'Not provided'}`,
-      `Service: ${service}`,
-      `Project details: ${details}`
-    ].join('\n');
-
-    const whatsappUrl =
-      `https://wa.me/${whatsappNumber}` +
-      `?text=${encodeURIComponent(message)}`;
-
-    window.open(
-      whatsappUrl,
-      '_blank',
-      'noopener,noreferrer'
-    );
+    window.location.href =
+      `mailto:${recipient}` +
+      `?subject=${subject}` +
+      `&body=${bodyText}`;
   }
 );
 
-/* =========================
-   Automatic Copyright Year
-========================= */
+/*
+  Footer current year.
+*/
 
-const yearElement =
-  document.querySelector('#year');
+const currentYear =
+  document.getElementById("current-year");
 
-if (yearElement) {
-  yearElement.textContent =
-    new Date().getFullYear();
-}
-/* ==================================
-   One-Time SCLOM Introduction Screen
-================================== */
-
-const brandIntro =
-  document.querySelector('#brand-intro');
-
-const sclomIntroStorageKey =
-  'sclom-introduction-seen';
-
-if (brandIntro) {
-  const introAlreadySeen =
-    localStorage.getItem(sclomIntroStorageKey);
-
-  if (!introAlreadySeen) {
-    document.body.classList.add('intro-active');
-    brandIntro.classList.add('show');
-
-    localStorage.setItem(
-      sclomIntroStorageKey,
-      'true'
-    );
-
-    window.setTimeout(() => {
-      brandIntro.classList.add('hide');
-
-      window.setTimeout(() => {
-        brandIntro.remove();
-
-        document.body.classList.remove(
-          'intro-active'
-        );
-      }, 700);
-    }, 3500);
-  } else {
-    brandIntro.remove();
-  }
+if (currentYear) {
+  currentYear.textContent =
+    String(new Date().getFullYear());
 }
